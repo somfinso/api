@@ -1,20 +1,20 @@
 import 'dart:async';
 import 'package:api/crud/usable.dart';
+import 'package:api/search/paymodel.dart';
+import 'package:api/search/payapi.dart';
 import 'package:api/search/search_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:api/search/books_api.dart';
+import 'package:api/search/payy.dart';
 
-import 'book.dart';
-
-class FilterNetworkListPage extends StatefulWidget {
-  const FilterNetworkListPage({Key? key}) : super(key: key);
+class eggPage extends StatefulWidget {
+  const eggPage({Key? key}) : super(key: key);
 
   @override
-  State<FilterNetworkListPage> createState() => _FilterNetworkListPageState();
+  State<eggPage> createState() => _eggPageState();
 }
 
-class _FilterNetworkListPageState extends State<FilterNetworkListPage> {
-  List<Book> books = [];
+class _eggPageState extends State<eggPage> {
+  List<Pay> pays = [];
   String query = '';
   Timer? debouncer;
 
@@ -42,9 +42,9 @@ class _FilterNetworkListPageState extends State<FilterNetworkListPage> {
 
   Future init() async {
     final books = await
-    BookApi.getBook(query);
+    PayApi.getPay(query);
 
-    setState(() => this.books = books);
+    setState(() => this.pays = pays);
   }
 
   @override
@@ -54,10 +54,11 @@ class _FilterNetworkListPageState extends State<FilterNetworkListPage> {
       body: Column(children: [
         buildSearch(),
         Expanded(child: ListView.builder(
-            itemCount: books.length,
+            itemCount: pays.length,
             itemBuilder: (context, index) {
-              final book = books[index];
-              return buildBook(book);
+              final pay = pays[index];
+              return UX(pay);
+                //buildPay(pay);
             }))
       ],),
     );
@@ -69,23 +70,35 @@ class _FilterNetworkListPageState extends State<FilterNetworkListPage> {
     onChanged: searchBook,
   );
   Future searchBook(String query) async => debounce(() async {
-    final books = await BookApi.getBook(query);
+    final pays = await PayApi.getPay(query);
 
     if (!mounted) return;
 
     setState(() {
       this.query = query;
-      this.books = books;
+      this.pays = pays;
     });
   });
-  Widget buildBook(Book book) => ListTile(
-    leading: Image.network(
-      book.urlImage,
-      fit: BoxFit.cover,
-      width: 50,
-      height: 50,
+  Widget buildPay(Pay pay) => ListTile(
+    title: Text(pay.name),
+    subtitle: Text(pay.cid),
+  );
+
+  Widget UX(Pay U)=>Card(
+    color: Colors.blueAccent,
+  elevation: 5,
+  shape: RoundedRectangleBorder(
+  side: BorderSide(color: Colors.white70, width: 1),
+  borderRadius: BorderRadius.only(
+  topLeft: Radius.circular(23),
+  topRight: Radius.circular(23)),
+
+  ),
+    child: ListTile(
+      leading: CircleAvatar(child: Text(U.name.toString().substring(0,1)),),
+      title: Text(U.name),
+      subtitle: Text(U.cid),
+      trailing: Text(U.status),
     ),
-    title: Text(book.title),
-    subtitle: Text(book.author),
   );
 }

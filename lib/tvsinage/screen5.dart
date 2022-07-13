@@ -1,4 +1,4 @@
-import 'package:api/tv/shortcut.dart';
+import 'package:api/tvsinage/shortcut.dart';
 import 'package:flutter/material.dart';
 class s5 extends StatefulWidget {
   const s5({Key? key}) : super(key: key);

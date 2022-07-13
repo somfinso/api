@@ -1,19 +1,19 @@
-import 'package:api/tv/shortcut.dart';
+import 'package:api/tvsinage//shortcut.dart';
 import 'package:flutter/material.dart';
-
-class s1 extends StatefulWidget {
-  const s1({Key? key}) : super(key: key);
+class s2 extends StatefulWidget {
+  const s2({Key? key}) : super(key: key);
 
   @override
-  State<s1> createState() => _s1State();
+  State<s2> createState() => _s2State();
 }
 
-class _s1State extends State<s1> {
+class _s2State extends State<s2> {
   var url ="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/768px-Dell_Logo.svg.png";
+var url2 ="https://www.citizenservices.gov.bt/DAHE/images/headerPaymenr.png";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(
-      child: Container(
+    return Scaffold(
+      body: Container(
         width:1500,
         margin: EdgeInsets.all(20),
         decoration: BoxDecoration(
@@ -33,21 +33,15 @@ class _s1State extends State<s1> {
           ],
 
         ),
-        child: Center(
-          child: Column(
-            children: [
-              Padding(padding: EdgeInsets.all(10)),
-              cont(url),
-              SizedBox(height: 35,),
-
-              bodyy(url),
-              SizedBox(height: 30,),
-
-
-              footer()
-            ],),
+        child: Column(children: [
+          Row(children: [
+            cont(url),rec(url2),cont(url)
+          ],),
+          bodyy(url2),
+          SizedBox(height: 45,),
+          footer()
+        ],),
         ),
-      ),
-    ),);
+    );
   }
 }

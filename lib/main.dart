@@ -1,9 +1,9 @@
-import 'package:api/tv/screen1.dart';
-import 'package:api/tv/screen2.dart';
-import 'package:api/tv/screen3.dart';
-import 'package:api/tv/screen4.dart';
-import 'package:api/tv/screen5.dart';
-import 'package:api/tv/screen6.dart';
+import 'package:api/tvsinage/screen1.dart';
+import 'package:api/tvsinage/screen2.dart';
+import 'package:api/tvsinage/screen3.dart';
+import 'package:api/tvsinage/screen4.dart';
+import 'package:api/tvsinage/screen5.dart';
+import 'package:api/tvsinage//screen6.dart';
 import 'package:api/webpage.dart';
 import 'package:flutter/material.dart';
 

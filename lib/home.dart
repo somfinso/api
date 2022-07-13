@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:api/tabview/beverage.dart';
-import 'package:api/tabview/maincourse.dart';
-import 'package:api/tabview/softdrink.dart';
-import 'package:api/tabview/tea.dart';
+import 'package:api/tvadswithphp//beverage.dart';
+import 'package:api/tvadswithphp/maincourse.dart';
+import 'package:api/tvadswithphp/softdrink.dart';
+import 'package:api/tvadswithphp/tea.dart';
 import 'package:flutter/material.dart';
 
 import 'crud/usable.dart';
